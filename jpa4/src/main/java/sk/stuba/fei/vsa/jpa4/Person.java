@@ -16,10 +16,14 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    @Enumerated(EnumType.STRING)
+    private Titul titul;
 
     @OneToMany
-    @JoinColumn(name = "garant_id")
+    @JoinColumn(name = "prednasajuci_id")
     private List<Subject> prednasky;
 
-
+    @ManyToMany
+    @JoinColumn(name = "cvicenie_id")
+    private List<Subject> cvicenia;
 }

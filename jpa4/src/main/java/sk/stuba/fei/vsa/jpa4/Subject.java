@@ -18,7 +18,11 @@ public class Subject {
     private String rocnik;
     private int kredity;
 
-    @OneToMany
-    @JoinColumn(name = "prednaska_id")
-    private List<Person> garant;
+    @ManyToOne
+    @JoinColumn(name = "prednasajuci_id")
+    private Person prednasajuci;
+
+    @ManyToMany(mappedBy = "cvicenia")
+    @JoinColumn(name = "asisten_id")
+    private List<Person> asistenti;
 }
