@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -17,7 +18,7 @@ public class Subject {
     private String rocnik;
     private int kredity;
 
-    @ManyToOne
-    @JoinColumn(name="prednasajuci_id", nullable=false)
-    private Person prednasajuci;
+    @OneToMany
+    @JoinColumn(name = "prednaska_id")
+    private List<Person> garant;
 }

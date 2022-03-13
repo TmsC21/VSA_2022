@@ -17,7 +17,8 @@ public class Person {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "prednasajuci")
+    @OneToMany
+    @JoinColumn(name = "garant_id")
     private List<Subject> prednasky;
 
 

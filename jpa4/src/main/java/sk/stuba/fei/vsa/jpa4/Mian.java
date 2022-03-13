@@ -4,6 +4,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Mian {
     public static void main(String[] args) {
@@ -15,13 +17,17 @@ public class Mian {
         prednaska1.setNazov("VSA");
         prednaska1.setRocnik("Treti");
         prednaska1.setKredity(10);
-        prednaska1.setPrednasajuci(person);
+        prednaska1.setGarant(Collections.singletonList(person));
 
         Subject prednaska2 = new Subject();
         prednaska2.setNazov("MAT");
         prednaska2.setRocnik("Prvy");
         prednaska2.setKredity(6);
-        prednaska2.setPrednasajuci(person);
+        prednaska1.setGarant(Collections.singletonList(person));
+
+        person.setPrednasky(new ArrayList<>());
+        person.getPrednasky().add(prednaska1);
+        person.getPrednasky().add(prednaska2);
 
         persist(managerFactory,person,prednaska1,prednaska2);
 
